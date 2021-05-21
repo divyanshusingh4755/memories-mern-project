@@ -43,7 +43,7 @@ function Auth() {
 
     const switchMode = () => {
         setIsSignup((prevIsSignUp) => !prevIsSignUp)
-        handleShowPassword(false)
+        setShowPassword(false)
 
     }
 
@@ -82,7 +82,7 @@ function Auth() {
                         }
                         <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
                         <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
-                        {isSignup && <Input name="confirmpassword" label="Confirm Password" handleChange={handleChange} type="password" />}
+                        {isSignup && <Input name="confirmPassword" label="Confirm Password" handleChange={handleChange} type="password" />}
                     </Grid>
                     <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
                         {
