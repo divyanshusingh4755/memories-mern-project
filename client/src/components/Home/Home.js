@@ -1,12 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import { Container, AppBar, Typography, Grow, Grid, Paper, TextField, Button } from '@material-ui/core';
 import Form from '../Form/Form';
 import Posts from '../Posts/Posts';
 import { useDispatch } from "react-redux"
-import { useEffect, useState } from 'react';
 import { useHistory, useLocation } from "react-router-dom";
 import ChipInput from "material-ui-chip-input";
-import { getPosts, getPostsBySearch } from '../../actions/posts'
+import { getPostsBySearch } from '../../actions/posts'
 import useStyles from "./styles"
 import Paginate from "../Pagination";
 
@@ -24,10 +23,6 @@ function Home() {
     const history = useHistory();
     const page = query.get("page") || 1;
     const searchQuery = query.get("searchQuery");
-
-    useEffect(() => {
-        dispatch(getPosts());
-    }, [currentId, dispatch])
 
     function handleKeyPress(e) {
         if (e.keyCode === 13) {
@@ -90,7 +85,7 @@ function Home() {
                         </AppBar>
                         <Form currentId={currentId} setCurrentId={setCurrentId} />
                         <Paper elevation={6}>
-                            <Paginate />
+                            <Paginate page={page} />
                         </Paper>
                     </Grid>
                 </Grid>
