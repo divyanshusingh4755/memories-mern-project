@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux"
 import { useEffect, useState } from 'react';
 import { useHistory, useLocation } from "react-router-dom";
 import ChipInput from "material-ui-chip-input";
-import { getPosts } from '../../actions/posts'
+import { getPosts, getPostsBySearch } from '../../actions/posts'
 import useStyles from "./styles"
 import Paginate from "../Pagination";
 
@@ -46,7 +46,7 @@ function Home() {
 
     function searchPost() {
         if (search.trim()) {
-            // dispatch -- fetch search posts
+            dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
         } else {
             history("/")
         }
